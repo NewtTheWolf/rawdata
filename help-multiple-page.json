@@ -1,0 +1,417 @@
+{
+  "name": "help",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "Zgtxn",
+  "actions": [
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "help.msg",
+      "storage": "1",
+      "varName2": "msg",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "anchor_id": "page.1",
+      "color": "#8080ff",
+      "description": "PAGE ONE",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "name": "Clear reactions from message"
+    },
+    {
+      "title": "Help Page 1",
+      "author": "",
+      "color": "RANDOM",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "false",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "em.1",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "em.1",
+      "message": "YOUR HELP TEXT",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "em.1",
+      "message": "PAGE ONE",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "message": "",
+      "storage2": "1",
+      "varName2": "em.1",
+      "name": "Edit Message"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "emoji": "4",
+      "varName2": "⏪",
+      "varName3": "left",
+      "name": "Add Reaction"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "emoji": "4",
+      "varName2": "⏩",
+      "varName3": "right",
+      "name": "Add Reaction"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "filter": "['⏪', '⏩'].includes(reaction.emoji.name) && author.id === user.id",
+      "max": "1",
+      "time": "60000",
+      "maxEmojis": "",
+      "maxUsers": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "timeout",
+      "storage2": "0",
+      "varName2": "",
+      "name": "Await Reaction Call Action"
+    },
+    {
+      "message": "1",
+      "varName": "msg",
+      "info": "1",
+      "find": "⏪",
+      "storage": "1",
+      "varName2": "left.reaction",
+      "name": "Find Reaction"
+    },
+    {
+      "message": "1",
+      "varName": "msg",
+      "info": "0",
+      "find": "⏩",
+      "storage": "1",
+      "varName2": "right.reaction",
+      "name": "Find Reaction"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "reaction": "1",
+      "varName2": "left.reaction",
+      "iftrue": "4",
+      "iftrueVal": "page.3",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If User Reacted"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "reaction": "1",
+      "varName2": "right.reaction",
+      "iftrue": "4",
+      "iftrueVal": "page.2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If User Reacted"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "page.2",
+      "color": "#8080ff",
+      "description": "PAGE TWO",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "name": "Clear reactions from message"
+    },
+    {
+      "title": "Help Page 2",
+      "author": "",
+      "color": "RANDOM",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "false",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "em.2",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "em.2",
+      "message": "YOUR HELP TEXT",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "em.2",
+      "message": "PAGE TWO",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "message": "",
+      "storage2": "1",
+      "varName2": "em.2",
+      "name": "Edit Message"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "emoji": "4",
+      "varName2": "⏪",
+      "varName3": "left",
+      "name": "Add Reaction"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "emoji": "4",
+      "varName2": "⏩",
+      "varName3": "right",
+      "name": "Add Reaction"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "filter": "['⏪', '⏩'].includes(reaction.emoji.name) && author.id === user.id",
+      "max": "1",
+      "time": "60000",
+      "maxEmojis": "",
+      "maxUsers": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "timeout",
+      "storage2": "0",
+      "varName2": "",
+      "name": "Await Reaction Call Action"
+    },
+    {
+      "message": "1",
+      "varName": "msg",
+      "info": "1",
+      "find": "⏪",
+      "storage": "1",
+      "varName2": "left.reaction",
+      "name": "Find Reaction"
+    },
+    {
+      "message": "1",
+      "varName": "msg",
+      "info": "0",
+      "find": "⏩",
+      "storage": "1",
+      "varName2": "right.reaction",
+      "name": "Find Reaction"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "reaction": "1",
+      "varName2": "left.reaction",
+      "iftrue": "4",
+      "iftrueVal": "page.1",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If User Reacted"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "reaction": "1",
+      "varName2": "right.reaction",
+      "iftrue": "4",
+      "iftrueVal": "page.3",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If User Reacted"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "page.3",
+      "color": "#8080ff",
+      "description": "PAGE THREE",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "name": "Clear reactions from message"
+    },
+    {
+      "title": "Help Page 3",
+      "author": "",
+      "color": "RANDOM",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "false",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "em.3",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "em.3",
+      "message": "YOUR HELP TEXT",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "em.3",
+      "message": "PAGE THREE",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "message": "",
+      "storage2": "1",
+      "varName2": "em.3",
+      "name": "Edit Message"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "emoji": "4",
+      "varName2": "⏪",
+      "varName3": "left",
+      "name": "Add Reaction"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "emoji": "4",
+      "varName2": "⏩",
+      "varName3": "right",
+      "name": "Add Reaction"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "filter": "['⏪', '⏩'].includes(reaction.emoji.name) && author.id === user.id",
+      "max": "1",
+      "time": "60000",
+      "maxEmojis": "",
+      "maxUsers": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "timeout",
+      "storage2": "0",
+      "varName2": "",
+      "name": "Await Reaction Call Action"
+    },
+    {
+      "message": "1",
+      "varName": "msg",
+      "info": "1",
+      "find": "⏪",
+      "storage": "1",
+      "varName2": "left.reaction",
+      "name": "Find Reaction"
+    },
+    {
+      "message": "1",
+      "varName": "msg",
+      "info": "0",
+      "find": "⏩",
+      "storage": "1",
+      "varName2": "right.reaction",
+      "name": "Find Reaction"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "reaction": "1",
+      "varName2": "left.reaction",
+      "iftrue": "4",
+      "iftrueVal": "page.2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If User Reacted"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "reaction": "1",
+      "varName2": "right.reaction",
+      "iftrue": "4",
+      "iftrueVal": "page.1",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If User Reacted"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "timout",
+      "color": "#0000ff",
+      "description": "TIMEOUT",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "msg",
+      "name": "Clear reactions from message"
+    }
+  ],
+  "comType": "0"
+}
