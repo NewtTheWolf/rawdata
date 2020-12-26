@@ -402,7 +402,7 @@
       "name": "End Action Sequence"
     },
     {
-      "anchor_id": "timout",
+      "anchor_id": "timeout",
       "color": "#0000ff",
       "description": "TIMEOUT",
       "name": "Create Anchor"
