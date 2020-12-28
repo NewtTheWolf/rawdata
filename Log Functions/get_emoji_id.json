@@ -1,0 +1,40 @@
+{
+    "name": "emoji",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "KYyHi",
+    "actions": [
+      {
+        "info": "0",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "name",
+        "name": "Store Command Params"
+      },
+      {
+        "info": "1",
+        "find": "${tempVars(\"name\")}",
+        "storage": "1",
+        "varName": "emoji",
+        "name": "Find Custom Emoji in Current Server"
+      },
+      {
+        "emoji": "1",
+        "varName": "emoji",
+        "info": "5",
+        "storage": "1",
+        "varName2": "emoji.id",
+        "name": "Store Emoji Info"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": "${tempVars(\"emoji\")} = ${tempVars(\"emoji.id\")}",
+        "storage": "0",
+        "varName2": "",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Send Message"
+      }
+    ]
+  }
