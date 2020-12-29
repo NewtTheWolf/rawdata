@@ -218,12 +218,12 @@
     {
       "storage": "1",
       "varName": "FLAG_LIST.lenght",
-      "comparison": "1",
+      "comparison": "0",
       "value": "\"undefined\"",
-      "iftrue": "0",
-      "iftrueVal": "",
+      "iftrue": "4",
+      "iftrueVal": "1",
       "iffalse": "4",
-      "iffalseVal": "1",
+      "iffalseVal": "without_emoji",
       "name": "Check Variable"
     },
     {
