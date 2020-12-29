@@ -31,3 +31,16 @@ I am planning some rawdatas for log functions here, feel free to use them!
 - [ ] User Update
 > if you still have ideas let me know!
 ## INSTALATION
+### You need the Current Events and Mods from the DBM Network to use these RawDatas!
+- [DBM Network Mods](https://github.com/dbm-network/mods)
+- [Download Mods](https://dbm-network.github.io/download-git/#/home?url=https:%2F%2Fgithub.com%2Fdbm-network%2Fmods%2Ftree%2Fmaster%2Factions)
+- [Download Events](https://dbm-network.github.io/download-git/#/home?url=https:%2F%2Fgithub.com%2Fdbm-network%2Fmods%2Ftree%2Fmaster%2Fevents)
+
+You either need to download my .env file and add it to your bot folder where your bot.js file is or create one yourself and add my text to it
+
+Everything else is explained in the .env file
+
+You also need the "dotenv" package from NodeJS which you should also install.
+```
+npm i dotenv --save
+```
