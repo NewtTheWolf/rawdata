@@ -44,3 +44,5 @@ You also need the "dotenv" package from NodeJS which you should also install.
 ```
 npm i dotenv --save
 ```
+
+If you want emojis to be shown in the log message you can also download the emojis, to get an ID of the emojis just use my "get_emoji_id.json" RawData
