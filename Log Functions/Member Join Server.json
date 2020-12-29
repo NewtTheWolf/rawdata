@@ -209,6 +209,17 @@
       "name": "Store Member Info"
     },
     {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "without_emoji",
+      "name": "Check Variable"
+    },
+    {
       "list": "7",
       "varName": "FLAG_LIST",
       "storage": "1",
