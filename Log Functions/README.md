@@ -1,7 +1,8 @@
 # Log Functions
 I am planning some rawdatas for log functions here, feel free to use them!
 - [x] Member Join Server 
-- [ ] Member Leave Server
+- [x] Member Leave Server
+- [ ] Member Kicked from Server
 - [ ] Channel Create
 - [ ] Channel Delete
 - [ ] Role Create

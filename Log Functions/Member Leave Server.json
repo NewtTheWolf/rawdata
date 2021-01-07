@@ -1,1461 +1,1578 @@
 {
-    "name": "Member Leave Server",
-    "temp": "Member",
-    "event-type": "7",
-    "_id": "iukLT",
-    "actions": [
-      {
-        "comment": "PLS READ <b>If you have no idea what you are doing then please leave the RawData as it is, if you have any problems please contact me (https://discord.com/users/310115562305093632) This RawData was created by NewtTheWolf</b>",
-        "color": "#ff0000",
-        "name": "Comment"
-      },
-      {
-        "comment": "Get Default Member Infos",
-        "color": "#ff8040",
-        "name": "Comment"
-      },
-      {
-        "member": "2",
-        "varName": "Member",
-        "info": "0",
-        "storage": "1",
-        "varName2": "member.object",
-        "name": "Store Member Info"
-      },
-      {
-        "member": "2",
-        "varName": "Member",
-        "info": "1",
-        "storage": "1",
-        "varName2": "member.id",
-        "name": "Store Member Info"
-      },
-      {
-        "member": "2",
-        "varName": "Member",
-        "info": "16",
-        "storage": "1",
-        "varName2": "member.avatar",
-        "name": "Store Member Info"
-      },
-      {
-        "member": "2",
-        "varName": "Member",
-        "info": "21",
-        "storage": "1",
-        "varName2": "member.tag",
-        "name": "Store Member Info"
-      },
-      {
-        "member": "2",
-        "varName": "Member",
-        "info": "23",
-        "storage": "1",
-        "varName2": "member.created",
-        "name": "Store Member Info"
-      },
-      {
-        "member": "2",
-        "varName": "Member",
-        "info": "25",
-        "storage": "1",
-        "varName2": "member.joined",
-        "name": "Store Member Info"
-      },
-      {
-        "comment": "Get Embed Infos",
-        "color": "#008000",
-        "name": "Comment"
-      },
-      {
-        "code": "require('dotenv').config();\nlet embed_title = process.env.EMBED_TITLE_MEMBER_LEAVE\nlet embed_color = process.env.EMBED_COLOR_MEMBER_LEAVE\nthis.storeValue(embed_title, 1, \"embed_title\", cache);\nthis.storeValue(embed_color, 1, \"embed_color\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "title": "${tempVars(\"embed_title\")}",
-        "author": "${tempVars(\"member.tag\")}",
-        "color": "${tempVars(\"embed_color\")}",
-        "url": "",
-        "authorIcon": "",
-        "authorUrl": "https://discord.com/users/${tempVars(\"member.id\")}",
-        "imageUrl": "",
-        "thumbUrl": "${tempVars(\"member.avatar\")}",
-        "timestamp": "true",
-        "debug": "false",
-        "text": "",
-        "year": "",
-        "month": "",
-        "day": "",
-        "hour": "",
-        "minute": "",
-        "second": "",
-        "storage": "1",
-        "varName": "embed",
-        "name": "Create Embed Message"
-      },
-      {
-        "comment": "Check Webhook Function",
-        "color": "#ff8000",
-        "name": "Comment"
-      },
-      {
-        "code": "require('dotenv').config();\nlet webhook_function = process.env.WEBHOOK_FUNCTION\nthis.storeValue(webhook_function, 1, \"webhook_function\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "storage": "1",
-        "varName": "webhook_function",
-        "comparison": "12",
-        "value": "/(true)/i",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "without_webhook_function",
-        "name": "Check Variable"
-      },
-      {
-        "comment": "With Webhook Function",
-        "color": "#ff8000",
-        "name": "Comment"
-      },
-      {
-        "code": "require('dotenv').config();\nlet webhook_id = process.env.WEBHOOK_ID\nlet webhook_token = process.env.WEBHOOK_TOKEN\nthis.storeValue(webhook_id, 1, \"webhook_id\", cache);\nthis.storeValue(webhook_token, 1, \"webhook_token\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "id": "${tempVars(\"webhook_id\")}",
-        "token": "${tempVars(\"webhook_token\")}",
-        "storage": "1",
-        "varName": "webhook",
-        "name": "Find Webhook"
-      },
-      {
-        "count": "3",
-        "name": "Skip Actions"
-      },
-      {
-        "anchor_id": "without_webhook_function",
-        "color": "#ff8000",
-        "description": "Without Webhook Function",
-        "name": "Create Anchor"
-      },
-      {
-        "code": "require('dotenv').config();\nlet log_channel_id = process.env.LOG_CHANNEL_ID\nthis.storeValue(log_channel_id, 1, \"log_channel_id\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"log_channel_id\")}",
-        "storage": "1",
-        "varName": "log_channel",
-        "name": "Find Channel"
-      },
-      {
-        "comment": "Check Emoji Info",
-        "color": "#ffff00",
-        "name": "Comment"
-      },
-      {
-        "code": "require('dotenv').config();\nlet user_info_emoji = process.env.USER_INFO_EMOJI\nthis.storeValue(user_info_emoji, 1, \"user_info_emoji\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "storage": "1",
-        "varName": "user_info_emoji",
-        "comparison": "12",
-        "value": "/(true)/i",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "without_emoji",
-        "name": "Check Variable"
-      },
-      {
-        "member": "2",
-        "varName": "Member",
-        "info": "28",
-        "storage": "1",
-        "varName2": "FLAG_LIST",
-        "name": "Store Member Info"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST",
-        "comparison": "0",
-        "value": "",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "without_emoji",
-        "name": "Check Variable"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "storage": "1",
-        "varName2": "FLAG_LIST.lenght",
-        "name": "Get List Length"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "0",
-        "value": "\"undefined\"",
-        "iftrue": "4",
-        "iftrueVal": "1",
-        "iffalse": "4",
-        "iffalseVal": "without_emoji",
-        "name": "Check Variable"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "1",
-        "color": "#ff0080",
-        "description": "List Lenght 1",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "1",
-        "value": "1",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "2",
-        "name": "Check Variable"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "0",
-        "storage": "1",
-        "varName2": "badge.0",
-        "name": "Get Item from List"
-      },
-      {
-        "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_0\")}",
-        "storage": "1",
-        "varName": "emoji.0",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Badges:",
-        "message": "${tempVars(\"emoji.0\")}",
-        "inline": "1",
-        "name": "Add Embed Field"
-      },
-      {
-        "description": "Continue",
-        "jump_to_anchor": "without_emoji",
-        "color": "#00ff00",
-        "name": "Jump to Anchor"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "2",
-        "color": "#ff0080",
-        "description": "List Lenght 2",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "1",
-        "value": "2",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "3",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST",
-        "comparison": "5",
-        "value": "\"EARLY_VERIFIED_DEVELOPER\"",
-        "iftrue": "4",
-        "iftrueVal": "1.bot",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Check Variable"
-      },
-      {
-        "anchor_id": "2.bot",
-        "color": "#ff00ff",
-        "description": "When User is Verified Bot Developer",
-        "name": "Create Anchor"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "0",
-        "storage": "1",
-        "varName2": "badge.0",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "1",
-        "storage": "1",
-        "varName2": "badge.1",
-        "name": "Get Item from List"
-      },
-      {
-        "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_0\")}",
-        "storage": "1",
-        "varName": "emoji.0",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_1\")}",
-        "storage": "1",
-        "varName": "emoji.1",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Badges:",
-        "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")}",
-        "inline": "1",
-        "name": "Add Embed Field"
-      },
-      {
-        "description": "Continue",
-        "jump_to_anchor": "without_emoji",
-        "color": "#00ff00",
-        "name": "Jump to Anchor"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "3",
-        "color": "#ff0080",
-        "description": "List Lenght 3",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "1",
-        "value": "3",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "4",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST",
-        "comparison": "5",
-        "value": "\"EARLY_VERIFIED_DEVELOPER\"",
-        "iftrue": "4",
-        "iftrueVal": "2.bot",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Check Variable"
-      },
-      {
-        "anchor_id": "3.bot",
-        "color": "#ff00ff",
-        "description": "When User is Verified Bot Developer",
-        "name": "Create Anchor"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "0",
-        "storage": "1",
-        "varName2": "badge.0",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "1",
-        "storage": "1",
-        "varName2": "badge.1",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "1",
-        "storage": "1",
-        "varName2": "badge.2",
-        "name": "Get Item from List"
-      },
-      {
-        "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_0\")}",
-        "storage": "1",
-        "varName": "emoji.0",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_1\")}",
-        "storage": "1",
-        "varName": "emoji.1",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_2\")}",
-        "storage": "1",
-        "varName": "emoji.2",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Badges:",
-        "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")}",
-        "inline": "1",
-        "name": "Add Embed Field"
-      },
-      {
-        "description": "Continue",
-        "jump_to_anchor": "without_emoji",
-        "color": "#00ff00",
-        "name": "Jump to Anchor"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "4",
-        "color": "#ff0080",
-        "description": "List Lenght 4",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "1",
-        "value": "5",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST",
-        "comparison": "5",
-        "value": "\"EARLY_VERIFIED_DEVELOPER\"",
-        "iftrue": "4",
-        "iftrueVal": "3",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Check Variable"
-      },
-      {
-        "anchor_id": "4.bot",
-        "color": "#ff00ff",
-        "description": "When User is Verified Bot Developer",
-        "name": "Create Anchor"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "0",
-        "storage": "1",
-        "varName2": "badge.0",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "1",
-        "storage": "1",
-        "varName2": "badge.1",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "2",
-        "storage": "1",
-        "varName2": "badge.2",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "3",
-        "storage": "1",
-        "varName2": "badge.3",
-        "name": "Get Item from List"
-      },
-      {
-        "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_3\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_0\")}",
-        "storage": "1",
-        "varName": "emoji.0",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_1\")}",
-        "storage": "1",
-        "varName": "emoji.1",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_2\")}",
-        "storage": "1",
-        "varName": "emoji.2",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_3\")}",
-        "storage": "1",
-        "varName": "emoji.3",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Badges:",
-        "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")}",
-        "inline": "1",
-        "name": "Add Embed Field"
-      },
-      {
-        "description": "Continue",
-        "jump_to_anchor": "without_emoji",
-        "color": "#00ff00",
-        "name": "Jump to Anchor"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "5",
-        "color": "#ff0080",
-        "description": "List Lenght 5",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "1",
-        "value": "5",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "6",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST",
-        "comparison": "5",
-        "value": "\"EARLY_VERIFIED_DEVELOPER\"",
-        "iftrue": "4",
-        "iftrueVal": "4.bot",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Check Variable"
-      },
-      {
-        "anchor_id": "5.bot",
-        "color": "#ff00ff",
-        "description": "When User is Verified Bot Developer",
-        "name": "Create Anchor"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "0",
-        "storage": "1",
-        "varName2": "badge.0",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "1",
-        "storage": "1",
-        "varName2": "badge.1",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "2",
-        "storage": "1",
-        "varName2": "badge.2",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "3",
-        "storage": "1",
-        "varName2": "badge.3",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "4",
-        "storage": "1",
-        "varName2": "badge.4",
-        "name": "Get Item from List"
-      },
-      {
-        "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nlet emoji_4_name = tempVars(\"badge.4\");\nlet emoji_4_id = process.env[emoji_4_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_3_id, 1, \"emoji_3\", cache);\nthis.storeValue(emoji_4_id, 1, \"emoji_4\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_0\")}",
-        "storage": "1",
-        "varName": "emoji.0",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_1\")}",
-        "storage": "1",
-        "varName": "emoji.1",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_2\")}",
-        "storage": "1",
-        "varName": "emoji.2",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_3\")}",
-        "storage": "1",
-        "varName": "emoji.3",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_4\")}",
-        "storage": "1",
-        "varName": "emoji.4",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Badges:",
-        "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")} ${tempVars(\"emoji.4\")}",
-        "inline": "1",
-        "name": "Add Embed Field"
-      },
-      {
-        "description": "Continue",
-        "jump_to_anchor": "without_emoji",
-        "color": "#00ff00",
-        "name": "Jump to Anchor"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "6",
-        "color": "#ff0080",
-        "description": "List Lenght 6",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "1",
-        "value": "6",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "7",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST",
-        "comparison": "5",
-        "value": "\"EARLY_VERIFIED_DEVELOPER\"",
-        "iftrue": "4",
-        "iftrueVal": "5.bot",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Check Variable"
-      },
-      {
-        "anchor_id": "6.bot",
-        "color": "#ff00ff",
-        "description": "When User is Verified Bot Developer",
-        "name": "Create Anchor"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "0",
-        "storage": "1",
-        "varName2": "badge.0",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "1",
-        "storage": "1",
-        "varName2": "badge.1",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "2",
-        "storage": "1",
-        "varName2": "badge.2",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "3",
-        "storage": "1",
-        "varName2": "badge.3",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "4",
-        "storage": "1",
-        "varName2": "badge.4",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "5",
-        "storage": "1",
-        "varName2": "badge.5",
-        "name": "Get Item from List"
-      },
-      {
-        "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nlet emoji_4_name = tempVars(\"badge.4\");\nlet emoji_4_id = process.env[emoji_4_name];\n\nlet emoji_5_name = tempVars(\"badge.5\");\nlet emoji_5_id = process.env[emoji_5_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_3_id, 1, \"emoji_3\", cache);\nthis.storeValue(emoji_4_id, 1, \"emoji_4\", cache);\nthis.storeValue(emoji_5_id, 1, \"emoji_5\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_0\")}",
-        "storage": "1",
-        "varName": "emoji.0",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_1\")}",
-        "storage": "1",
-        "varName": "emoji.1",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_2\")}",
-        "storage": "1",
-        "varName": "emoji.2",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_3\")}",
-        "storage": "1",
-        "varName": "emoji.3",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_4\")}",
-        "storage": "1",
-        "varName": "emoji.4",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_5\")}",
-        "storage": "1",
-        "varName": "emoji.5",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Badges:",
-        "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")} ${tempVars(\"emoji.4\")} ${tempVars(\"emoji.5\")}",
-        "inline": "1",
-        "name": "Add Embed Field"
-      },
-      {
-        "description": "Continue",
-        "jump_to_anchor": "without_emoji",
-        "color": "#00ff00",
-        "name": "Jump to Anchor"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "7",
-        "color": "#ff0080",
-        "description": "List Lenght 7",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "1",
-        "value": "7",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "8",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST",
-        "comparison": "5",
-        "value": "\"EARLY_VERIFIED_DEVELOPER\"",
-        "iftrue": "4",
-        "iftrueVal": "6.bot",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Check Variable"
-      },
-      {
-        "anchor_id": "7.bot",
-        "color": "#ff00ff",
-        "description": "When User is Verified Bot Developer",
-        "name": "Create Anchor"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "0",
-        "storage": "1",
-        "varName2": "badge.0",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "1",
-        "storage": "1",
-        "varName2": "badge.1",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "2",
-        "storage": "1",
-        "varName2": "badge.2",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "3",
-        "storage": "1",
-        "varName2": "badge.3",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "4",
-        "storage": "1",
-        "varName2": "badge.4",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "5",
-        "storage": "1",
-        "varName2": "badge.5",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "6",
-        "storage": "1",
-        "varName2": "badge.6",
-        "name": "Get Item from List"
-      },
-      {
-        "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nlet emoji_4_name = tempVars(\"badge.4\");\nlet emoji_4_id = process.env[emoji_4_name];\n\nlet emoji_5_name = tempVars(\"badge.5\");\nlet emoji_5_id = process.env[emoji_5_name];\n\nlet emoji_6_name = tempVars(\"badge.6\");\nlet emoji_6_id = process.env[emoji_6_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_3_id, 1, \"emoji_3\", cache);\nthis.storeValue(emoji_4_id, 1, \"emoji_4\", cache);\nthis.storeValue(emoji_5_id, 1, \"emoji_5\", cache);\nthis.storeValue(emoji_6_id, 1, \"emoji_6\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_0\")}",
-        "storage": "1",
-        "varName": "emoji.0",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_1\")}",
-        "storage": "1",
-        "varName": "emoji.1",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_2\")}",
-        "storage": "1",
-        "varName": "emoji.2",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_3\")}",
-        "storage": "1",
-        "varName": "emoji.3",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_4\")}",
-        "storage": "1",
-        "varName": "emoji.4",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_5\")}",
-        "storage": "1",
-        "varName": "emoji.5",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_6\")}",
-        "storage": "1",
-        "varName": "emoji.6",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Badges:",
-        "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")} ${tempVars(\"emoji.4\")} ${tempVars(\"emoji.5\")} ${tempVars(\"emoji.6\")}",
-        "inline": "1",
-        "name": "Add Embed Field"
-      },
-      {
-        "description": "Continue",
-        "jump_to_anchor": "without_emoji",
-        "color": "#00ff00",
-        "name": "Jump to Anchor"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "8",
-        "color": "#ff0080",
-        "description": "List Lenght 8",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST.lenght",
-        "comparison": "1",
-        "value": "8",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "4",
-        "iffalseVal": "error",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "FLAG_LIST",
-        "comparison": "5",
-        "value": "\"EARLY_VERIFIED_DEVELOPER\"",
-        "iftrue": "4",
-        "iftrueVal": "7.bot",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Check Variable"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "0",
-        "storage": "1",
-        "varName2": "badge.0",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "1",
-        "storage": "1",
-        "varName2": "badge.1",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "2",
-        "storage": "1",
-        "varName2": "badge.2",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "3",
-        "storage": "1",
-        "varName2": "badge.3",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "4",
-        "storage": "1",
-        "varName2": "badge.4",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "5",
-        "storage": "1",
-        "varName2": "badge.5",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "6",
-        "storage": "1",
-        "varName2": "badge.6",
-        "name": "Get Item from List"
-      },
-      {
-        "list": "7",
-        "varName": "FLAG_LIST",
-        "getType": "3",
-        "position": "7",
-        "storage": "1",
-        "varName2": "badge.7",
-        "name": "Get Item from List"
-      },
-      {
-        "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nlet emoji_4_name = tempVars(\"badge.4\");\nlet emoji_4_id = process.env[emoji_4_name];\n\nlet emoji_5_name = tempVars(\"badge.5\");\nlet emoji_5_id = process.env[emoji_5_name];\n\nlet emoji_6_name = tempVars(\"badge.6\");\nlet emoji_6_id = process.env[emoji_6_name];\n\nlet emoji_7_name = tempVars(\"badge.7\");\nlet emoji_7_id = process.env[emoji_7_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_3_id, 1, \"emoji_3\", cache);\nthis.storeValue(emoji_4_id, 1, \"emoji_4\", cache);\nthis.storeValue(emoji_5_id, 1, \"emoji_5\", cache);\nthis.storeValue(emoji_6_id, 1, \"emoji_6\", cache);\nthis.storeValue(emoji_7_id, 1, \"emoji_7\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_0\")}",
-        "storage": "1",
-        "varName": "emoji.0",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_1\")}",
-        "storage": "1",
-        "varName": "emoji.1",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_2\")}",
-        "storage": "1",
-        "varName": "emoji.2",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_3\")}",
-        "storage": "1",
-        "varName": "emoji.3",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_4\")}",
-        "storage": "1",
-        "varName": "emoji.4",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_5\")}",
-        "storage": "1",
-        "varName": "emoji.5",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_6\")}",
-        "storage": "1",
-        "varName": "emoji.6",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "info": "0",
-        "find": "${tempVars(\"emoji_7\")}",
-        "storage": "1",
-        "varName": "emoji.7",
-        "name": "Find Custom Emoji in Current Server"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Badges:",
-        "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")} ${tempVars(\"emoji.4\")} ${tempVars(\"emoji.5\")} ${tempVars(\"emoji.6\")} ${tempVars(\"emoji.7\")}",
-        "inline": "1",
-        "name": "Add Embed Field"
-      },
-      {
-        "description": "Continue",
-        "jump_to_anchor": "without_emoji",
-        "color": "#00ff00",
-        "name": "Jump to Anchor"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "without_emoji",
-        "color": "#ffff00",
-        "description": "Without Emoji",
-        "name": "Create Anchor"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Member:",
-        "message": "${tempVars(\"member.object\")}",
-        "inline": "0",
-        "name": "Add Embed Field"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Member Tag:",
-        "message": "${tempVars(\"member.tag\")}",
-        "inline": "0",
-        "name": "Add Embed Field"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "name": "Add Blank Embed Field"
-      },
-      {
-        "code": "var timestamp = tempVars(\"member.created\"),\nd = new Date( timestamp );\ndate = d.getHours() + \":\" + d.getMinutes() + \", \" + d.toDateString();\nthis.storeValue(date, 1, \"member.c\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "code": "var timestamp = tempVars(\"member.joined\"),\nd = new Date( timestamp );\ndate = d.getHours() + \":\" + d.getMinutes() + \", \" + d.toDateString();\nthis.storeValue(date, 1, \"member.j\", cache);",
-        "behavior": "0",
-        "interpretation": "1",
-        "storage": "0",
-        "varName": "",
-        "VTypeSelect": "0",
-        "CVTypeValue": "",
-        "name": "Run Script"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Account Created at:",
-        "message": "${tempVars(\"member.c\")}",
-        "inline": "0",
-        "name": "Add Embed Field"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "fieldName": "Account Joined at:",
-        "message": "${tempVars(\"member.j\")}",
-        "inline": "0",
-        "name": "Add Embed Field"
-      },
-      {
-        "storage": "1",
-        "varName": "webhook_function",
-        "comparison": "12",
-        "value": "/(true)/i",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "3",
-        "iffalseVal": "2",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "webhook",
-        "storage2": "1",
-        "varName2": "embed",
-        "name": "Send Embed to Webhook"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "storage": "1",
-        "varName": "embed",
-        "channel": "5",
-        "varName2": "log_channel",
-        "storage3": "0",
-        "varName3": "",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "messageContent": "",
-        "name": "Send Embed Message"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "anchor_id": "error",
-        "color": "#ff0000",
-        "description": "ERROR",
-        "name": "Create Anchor"
-      },
-      {
-        "channel": "5",
-        "varName": "log_channel",
-        "message": "ERROR",
-        "storage": "0",
-        "varName2": "",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "name": "Send Message"
-      },
-      {
-        "title": "ERROR",
-        "author": "",
-        "color": "RED",
-        "url": "",
-        "authorIcon": "",
-        "authorUrl": "",
-        "imageUrl": "",
-        "thumbUrl": "",
-        "timestamp": "false",
-        "debug": "false",
-        "text": "",
-        "year": "",
-        "month": "",
-        "day": "",
-        "hour": "",
-        "minute": "",
-        "second": "",
-        "storage": "1",
-        "varName": "em.error",
-        "name": "Create Embed Message"
-      },
-      {
-        "storage": "1",
-        "varName": "em.error",
-        "message": "[Pls Contact Newt](https://discord.com/users/310115562305093632)",
-        "name": "Set Embed Description"
-      },
-      {
-        "storage": "1",
-        "varName": "webhook_function",
-        "comparison": "12",
-        "value": "/(true)/i",
-        "iftrue": "0",
-        "iftrueVal": "",
-        "iffalse": "3",
-        "iffalseVal": "2",
-        "name": "Check Variable"
-      },
-      {
-        "storage": "1",
-        "varName": "webhook",
-        "storage2": "1",
-        "varName2": "em.error",
-        "name": "Send Embed to Webhook"
-      },
-      {
-        "name": "End Action Sequence"
-      },
-      {
-        "storage": "1",
-        "varName": "em.error",
-        "channel": "5",
-        "varName2": "log_channel",
-        "storage3": "0",
-        "varName3": "",
-        "iffalse": "0",
-        "iffalseVal": "",
-        "messageContent": "",
-        "name": "Send Embed Message"
-      }
-    ]
-  }
+  "name": "Member Leave Server",
+  "temp": "Member",
+  "event-type": "7",
+  "_id": "iukLT",
+  "actions": [
+    {
+      "comment": "PLS READ <b>If you have no idea what you are doing then please leave the RawData as it is, if you have any problems please contact me (https://discord.com/users/310115562305093632) This RawData was created by NewtTheWolf</b>",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "type": "0",
+      "before": "",
+      "limit": "1",
+      "storage2": "1",
+      "varName2": "audit",
+      "name": "Store Audit Log List MOD"
+    },
+    {
+      "list": "7",
+      "varName": "audit",
+      "getType": "0",
+      "position": "",
+      "storage": "1",
+      "varName2": "item",
+      "name": "Get Item from List"
+    },
+    {
+      "storage": "1",
+      "varName": "item",
+      "info": "1",
+      "position": "",
+      "storage2": "1",
+      "varName2": "action",
+      "name": "Store Audit Log Info MOD"
+    },
+    {
+      "storage": "1",
+      "varName": "action",
+      "comparison": "1",
+      "value": "\"MEMBER_KICK\"",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "8",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "item",
+      "info": "0",
+      "position": "",
+      "storage2": "1",
+      "varName2": "id",
+      "name": "Store Audit Log Info MOD"
+    },
+    {
+      "storage": "1",
+      "varName": "id",
+      "comparison": "1",
+      "value": "serverVars(\"id\")",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "comment": "Get Default Member Infos",
+      "color": "#ff8040",
+      "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "0",
+      "storage": "1",
+      "varName2": "member.object",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "1",
+      "storage": "1",
+      "varName2": "member.id",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "16",
+      "storage": "1",
+      "varName2": "member.avatar",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "21",
+      "storage": "1",
+      "varName2": "member.tag",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "23",
+      "storage": "1",
+      "varName2": "member.created",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "25",
+      "storage": "1",
+      "varName2": "member.joined",
+      "name": "Store Member Info"
+    },
+    {
+      "comment": "Get Embed Infos",
+      "color": "#008000",
+      "name": "Comment"
+    },
+    {
+      "code": "require('dotenv').config();\nlet embed_title = process.env.EMBED_TITLE_MEMBER_LEAVE\nlet embed_color = process.env.EMBED_COLOR_MEMBER_LEAVE\nthis.storeValue(embed_title, 1, \"embed_title\", cache);\nthis.storeValue(embed_color, 1, \"embed_color\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "title": "${tempVars(\"embed_title\")}",
+      "author": "${tempVars(\"member.tag\")}",
+      "color": "${tempVars(\"embed_color\")}",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "https://discord.com/users/${tempVars(\"member.id\")}",
+      "imageUrl": "",
+      "thumbUrl": "${tempVars(\"member.avatar\")}",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "comment": "Check Webhook Function",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "code": "require('dotenv').config();\nlet webhook_function = process.env.WEBHOOK_FUNCTION\nthis.storeValue(webhook_function, 1, \"webhook_function\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook_function",
+      "comparison": "12",
+      "value": "/(true)/i",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "without_webhook_function",
+      "name": "Check Variable"
+    },
+    {
+      "comment": "With Webhook Function",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "code": "require('dotenv').config();\nlet webhook_id = process.env.WEBHOOK_ID\nlet webhook_token = process.env.WEBHOOK_TOKEN\nthis.storeValue(webhook_id, 1, \"webhook_id\", cache);\nthis.storeValue(webhook_token, 1, \"webhook_token\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "id": "${tempVars(\"webhook_id\")}",
+      "token": "${tempVars(\"webhook_token\")}",
+      "storage": "1",
+      "varName": "webhook",
+      "name": "Find Webhook"
+    },
+    {
+      "count": "3",
+      "name": "Skip Actions"
+    },
+    {
+      "anchor_id": "without_webhook_function",
+      "color": "#ff8000",
+      "description": "Without Webhook Function",
+      "name": "Create Anchor"
+    },
+    {
+      "code": "require('dotenv').config();\nlet log_channel_id = process.env.LOG_CHANNEL_ID\nthis.storeValue(log_channel_id, 1, \"log_channel_id\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"log_channel_id\")}",
+      "storage": "1",
+      "varName": "log_channel",
+      "name": "Find Channel"
+    },
+    {
+      "comment": "Check is User a Bot",
+      "color": "#808040",
+      "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "0",
+      "varName2": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "5",
+      "name": "Check If Member"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "type": "28",
+      "before": "",
+      "limit": "1",
+      "storage2": "1",
+      "varName2": "bot",
+      "name": "Store Audit Log List MOD"
+    },
+    {
+      "list": "7",
+      "varName": "bot",
+      "getType": "0",
+      "position": "",
+      "storage": "1",
+      "varName2": "bot.list",
+      "name": "Get Item from List"
+    },
+    {
+      "storage": "1",
+      "varName": "bot.list",
+      "info": "2",
+      "position": "",
+      "storage2": "1",
+      "varName2": "executer.bot",
+      "name": "Store Audit Log Info MOD"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "User is a Bot and Invited by:",
+      "message": "${tempVars(\"executer.bot\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "comment": "Check Emoji Info",
+      "color": "#ffff00",
+      "name": "Comment"
+    },
+    {
+      "code": "require('dotenv').config();\nlet user_info_emoji = process.env.USER_INFO_EMOJI\nthis.storeValue(user_info_emoji, 1, \"user_info_emoji\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "user_info_emoji",
+      "comparison": "12",
+      "value": "/(true)/i",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "without_emoji",
+      "name": "Check Variable"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "28",
+      "storage": "1",
+      "varName2": "FLAG_LIST",
+      "name": "Store Member Info"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "without_emoji",
+      "name": "Check Variable"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "storage": "1",
+      "varName2": "FLAG_LIST.lenght",
+      "name": "Get List Length"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "0",
+      "value": "\"undefined\"",
+      "iftrue": "4",
+      "iftrueVal": "1",
+      "iffalse": "4",
+      "iffalseVal": "without_emoji",
+      "name": "Check Variable"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "1",
+      "color": "#ff0080",
+      "description": "List Lenght 1",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "1",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "0",
+      "storage": "1",
+      "varName2": "badge.0",
+      "name": "Get Item from List"
+    },
+    {
+      "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_0\")}",
+      "storage": "1",
+      "varName": "emoji.0",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Badges:",
+      "message": "${tempVars(\"emoji.0\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "2",
+      "color": "#ff0080",
+      "description": "List Lenght 2",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "1",
+      "value": "2",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "3",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "5",
+      "value": "\"EARLY_VERIFIED_DEVELOPER\"",
+      "iftrue": "4",
+      "iftrueVal": "1.bot",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "anchor_id": "2.bot",
+      "color": "#ff00ff",
+      "description": "When User is Verified Bot Developer",
+      "name": "Create Anchor"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "0",
+      "storage": "1",
+      "varName2": "badge.0",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "1",
+      "storage": "1",
+      "varName2": "badge.1",
+      "name": "Get Item from List"
+    },
+    {
+      "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_0\")}",
+      "storage": "1",
+      "varName": "emoji.0",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_1\")}",
+      "storage": "1",
+      "varName": "emoji.1",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Badges:",
+      "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "3",
+      "color": "#ff0080",
+      "description": "List Lenght 3",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "1",
+      "value": "3",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "4",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "5",
+      "value": "\"EARLY_VERIFIED_DEVELOPER\"",
+      "iftrue": "4",
+      "iftrueVal": "2.bot",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "anchor_id": "3.bot",
+      "color": "#ff00ff",
+      "description": "When User is Verified Bot Developer",
+      "name": "Create Anchor"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "0",
+      "storage": "1",
+      "varName2": "badge.0",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "1",
+      "storage": "1",
+      "varName2": "badge.1",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "1",
+      "storage": "1",
+      "varName2": "badge.2",
+      "name": "Get Item from List"
+    },
+    {
+      "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_0\")}",
+      "storage": "1",
+      "varName": "emoji.0",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_1\")}",
+      "storage": "1",
+      "varName": "emoji.1",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_2\")}",
+      "storage": "1",
+      "varName": "emoji.2",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Badges:",
+      "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "4",
+      "color": "#ff0080",
+      "description": "List Lenght 4",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "1",
+      "value": "5",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "5",
+      "value": "\"EARLY_VERIFIED_DEVELOPER\"",
+      "iftrue": "4",
+      "iftrueVal": "3",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "anchor_id": "4.bot",
+      "color": "#ff00ff",
+      "description": "When User is Verified Bot Developer",
+      "name": "Create Anchor"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "0",
+      "storage": "1",
+      "varName2": "badge.0",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "1",
+      "storage": "1",
+      "varName2": "badge.1",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "2",
+      "storage": "1",
+      "varName2": "badge.2",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "3",
+      "storage": "1",
+      "varName2": "badge.3",
+      "name": "Get Item from List"
+    },
+    {
+      "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_3\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_0\")}",
+      "storage": "1",
+      "varName": "emoji.0",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_1\")}",
+      "storage": "1",
+      "varName": "emoji.1",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_2\")}",
+      "storage": "1",
+      "varName": "emoji.2",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_3\")}",
+      "storage": "1",
+      "varName": "emoji.3",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Badges:",
+      "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "5",
+      "color": "#ff0080",
+      "description": "List Lenght 5",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "1",
+      "value": "5",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "6",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "5",
+      "value": "\"EARLY_VERIFIED_DEVELOPER\"",
+      "iftrue": "4",
+      "iftrueVal": "4.bot",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "anchor_id": "5.bot",
+      "color": "#ff00ff",
+      "description": "When User is Verified Bot Developer",
+      "name": "Create Anchor"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "0",
+      "storage": "1",
+      "varName2": "badge.0",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "1",
+      "storage": "1",
+      "varName2": "badge.1",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "2",
+      "storage": "1",
+      "varName2": "badge.2",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "3",
+      "storage": "1",
+      "varName2": "badge.3",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "4",
+      "storage": "1",
+      "varName2": "badge.4",
+      "name": "Get Item from List"
+    },
+    {
+      "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nlet emoji_4_name = tempVars(\"badge.4\");\nlet emoji_4_id = process.env[emoji_4_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_3_id, 1, \"emoji_3\", cache);\nthis.storeValue(emoji_4_id, 1, \"emoji_4\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_0\")}",
+      "storage": "1",
+      "varName": "emoji.0",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_1\")}",
+      "storage": "1",
+      "varName": "emoji.1",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_2\")}",
+      "storage": "1",
+      "varName": "emoji.2",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_3\")}",
+      "storage": "1",
+      "varName": "emoji.3",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_4\")}",
+      "storage": "1",
+      "varName": "emoji.4",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Badges:",
+      "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")} ${tempVars(\"emoji.4\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "6",
+      "color": "#ff0080",
+      "description": "List Lenght 6",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "1",
+      "value": "6",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "7",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "5",
+      "value": "\"EARLY_VERIFIED_DEVELOPER\"",
+      "iftrue": "4",
+      "iftrueVal": "5.bot",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "anchor_id": "6.bot",
+      "color": "#ff00ff",
+      "description": "When User is Verified Bot Developer",
+      "name": "Create Anchor"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "0",
+      "storage": "1",
+      "varName2": "badge.0",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "1",
+      "storage": "1",
+      "varName2": "badge.1",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "2",
+      "storage": "1",
+      "varName2": "badge.2",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "3",
+      "storage": "1",
+      "varName2": "badge.3",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "4",
+      "storage": "1",
+      "varName2": "badge.4",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "5",
+      "storage": "1",
+      "varName2": "badge.5",
+      "name": "Get Item from List"
+    },
+    {
+      "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nlet emoji_4_name = tempVars(\"badge.4\");\nlet emoji_4_id = process.env[emoji_4_name];\n\nlet emoji_5_name = tempVars(\"badge.5\");\nlet emoji_5_id = process.env[emoji_5_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_3_id, 1, \"emoji_3\", cache);\nthis.storeValue(emoji_4_id, 1, \"emoji_4\", cache);\nthis.storeValue(emoji_5_id, 1, \"emoji_5\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_0\")}",
+      "storage": "1",
+      "varName": "emoji.0",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_1\")}",
+      "storage": "1",
+      "varName": "emoji.1",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_2\")}",
+      "storage": "1",
+      "varName": "emoji.2",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_3\")}",
+      "storage": "1",
+      "varName": "emoji.3",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_4\")}",
+      "storage": "1",
+      "varName": "emoji.4",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_5\")}",
+      "storage": "1",
+      "varName": "emoji.5",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Badges:",
+      "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")} ${tempVars(\"emoji.4\")} ${tempVars(\"emoji.5\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "7",
+      "color": "#ff0080",
+      "description": "List Lenght 7",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "1",
+      "value": "7",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "8",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "5",
+      "value": "\"EARLY_VERIFIED_DEVELOPER\"",
+      "iftrue": "4",
+      "iftrueVal": "6.bot",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "anchor_id": "7.bot",
+      "color": "#ff00ff",
+      "description": "When User is Verified Bot Developer",
+      "name": "Create Anchor"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "0",
+      "storage": "1",
+      "varName2": "badge.0",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "1",
+      "storage": "1",
+      "varName2": "badge.1",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "2",
+      "storage": "1",
+      "varName2": "badge.2",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "3",
+      "storage": "1",
+      "varName2": "badge.3",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "4",
+      "storage": "1",
+      "varName2": "badge.4",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "5",
+      "storage": "1",
+      "varName2": "badge.5",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "6",
+      "storage": "1",
+      "varName2": "badge.6",
+      "name": "Get Item from List"
+    },
+    {
+      "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nlet emoji_4_name = tempVars(\"badge.4\");\nlet emoji_4_id = process.env[emoji_4_name];\n\nlet emoji_5_name = tempVars(\"badge.5\");\nlet emoji_5_id = process.env[emoji_5_name];\n\nlet emoji_6_name = tempVars(\"badge.6\");\nlet emoji_6_id = process.env[emoji_6_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_3_id, 1, \"emoji_3\", cache);\nthis.storeValue(emoji_4_id, 1, \"emoji_4\", cache);\nthis.storeValue(emoji_5_id, 1, \"emoji_5\", cache);\nthis.storeValue(emoji_6_id, 1, \"emoji_6\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_0\")}",
+      "storage": "1",
+      "varName": "emoji.0",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_1\")}",
+      "storage": "1",
+      "varName": "emoji.1",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_2\")}",
+      "storage": "1",
+      "varName": "emoji.2",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_3\")}",
+      "storage": "1",
+      "varName": "emoji.3",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_4\")}",
+      "storage": "1",
+      "varName": "emoji.4",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_5\")}",
+      "storage": "1",
+      "varName": "emoji.5",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_6\")}",
+      "storage": "1",
+      "varName": "emoji.6",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Badges:",
+      "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")} ${tempVars(\"emoji.4\")} ${tempVars(\"emoji.5\")} ${tempVars(\"emoji.6\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "8",
+      "color": "#ff0080",
+      "description": "List Lenght 8",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST.lenght",
+      "comparison": "1",
+      "value": "8",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "error",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "FLAG_LIST",
+      "comparison": "5",
+      "value": "\"EARLY_VERIFIED_DEVELOPER\"",
+      "iftrue": "4",
+      "iftrueVal": "7.bot",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "0",
+      "storage": "1",
+      "varName2": "badge.0",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "1",
+      "storage": "1",
+      "varName2": "badge.1",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "2",
+      "storage": "1",
+      "varName2": "badge.2",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "3",
+      "storage": "1",
+      "varName2": "badge.3",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "4",
+      "storage": "1",
+      "varName2": "badge.4",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "5",
+      "storage": "1",
+      "varName2": "badge.5",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "6",
+      "storage": "1",
+      "varName2": "badge.6",
+      "name": "Get Item from List"
+    },
+    {
+      "list": "7",
+      "varName": "FLAG_LIST",
+      "getType": "3",
+      "position": "7",
+      "storage": "1",
+      "varName2": "badge.7",
+      "name": "Get Item from List"
+    },
+    {
+      "code": "require('dotenv').config();\nlet emoji_0_name = tempVars(\"badge.0\");\nlet emoji_0_id = process.env[emoji_0_name];\n\nlet emoji_1_name = tempVars(\"badge.1\");\nlet emoji_1_id = process.env[emoji_1_name];\n\nlet emoji_2_name = tempVars(\"badge.2\");\nlet emoji_2_id = process.env[emoji_2_name];\n\nlet emoji_3_name = tempVars(\"badge.3\");\nlet emoji_3_id = process.env[emoji_3_name];\n\nlet emoji_4_name = tempVars(\"badge.4\");\nlet emoji_4_id = process.env[emoji_4_name];\n\nlet emoji_5_name = tempVars(\"badge.5\");\nlet emoji_5_id = process.env[emoji_5_name];\n\nlet emoji_6_name = tempVars(\"badge.6\");\nlet emoji_6_id = process.env[emoji_6_name];\n\nlet emoji_7_name = tempVars(\"badge.7\");\nlet emoji_7_id = process.env[emoji_7_name];\n\nthis.storeValue(emoji_0_id, 1, \"emoji_0\", cache);\nthis.storeValue(emoji_1_id, 1, \"emoji_1\", cache);\nthis.storeValue(emoji_2_id, 1, \"emoji_2\", cache);\nthis.storeValue(emoji_3_id, 1, \"emoji_3\", cache);\nthis.storeValue(emoji_4_id, 1, \"emoji_4\", cache);\nthis.storeValue(emoji_5_id, 1, \"emoji_5\", cache);\nthis.storeValue(emoji_6_id, 1, \"emoji_6\", cache);\nthis.storeValue(emoji_7_id, 1, \"emoji_7\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_0\")}",
+      "storage": "1",
+      "varName": "emoji.0",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_1\")}",
+      "storage": "1",
+      "varName": "emoji.1",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_2\")}",
+      "storage": "1",
+      "varName": "emoji.2",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_3\")}",
+      "storage": "1",
+      "varName": "emoji.3",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_4\")}",
+      "storage": "1",
+      "varName": "emoji.4",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_5\")}",
+      "storage": "1",
+      "varName": "emoji.5",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_6\")}",
+      "storage": "1",
+      "varName": "emoji.6",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"emoji_7\")}",
+      "storage": "1",
+      "varName": "emoji.7",
+      "name": "Find Custom Emoji in Current Server"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Badges:",
+      "message": "${tempVars(\"emoji.0\")} ${tempVars(\"emoji.1\")} ${tempVars(\"emoji.2\")} ${tempVars(\"emoji.3\")} ${tempVars(\"emoji.4\")} ${tempVars(\"emoji.5\")} ${tempVars(\"emoji.6\")} ${tempVars(\"emoji.7\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "without_emoji",
+      "color": "#ffff00",
+      "description": "Without Emoji",
+      "name": "Create Anchor"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Member:",
+      "message": "${tempVars(\"member.object\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Member Tag:",
+      "message": "${tempVars(\"member.tag\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "name": "Add Blank Embed Field"
+    },
+    {
+      "code": "var timestamp = tempVars(\"member.created\"),\nd = new Date( timestamp );\ndate = d.getHours() + \":\" + d.getMinutes() + \", \" + d.toDateString();\nthis.storeValue(date, 1, \"member.c\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "code": "var timestamp = tempVars(\"member.joined\"),\nd = new Date( timestamp );\ndate = d.getHours() + \":\" + d.getMinutes() + \", \" + d.toDateString();\nthis.storeValue(date, 1, \"member.j\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Account Created at:",
+      "message": "${tempVars(\"member.c\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Account Joined at:",
+      "message": "${tempVars(\"member.j\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook_function",
+      "comparison": "12",
+      "value": "/(true)/i",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook",
+      "storage2": "1",
+      "varName2": "embed",
+      "name": "Send Embed to Webhook"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "5",
+      "varName2": "log_channel",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "messageContent": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "anchor_id": "error",
+      "color": "#ff0000",
+      "description": "ERROR",
+      "name": "Create Anchor"
+    },
+    {
+      "channel": "5",
+      "varName": "log_channel",
+      "message": "ERROR",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "title": "ERROR",
+      "author": "",
+      "color": "RED",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "false",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "em.error",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "em.error",
+      "message": "[Pls Contact Newt](https://discord.com/users/310115562305093632)",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook_function",
+      "comparison": "12",
+      "value": "/(true)/i",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook",
+      "storage2": "1",
+      "varName2": "em.error",
+      "name": "Send Embed to Webhook"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "storage": "1",
+      "varName": "em.error",
+      "channel": "5",
+      "varName2": "log_channel",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "messageContent": "",
+      "name": "Send Embed Message"
+    }
+  ]
+}

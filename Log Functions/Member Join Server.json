@@ -175,6 +175,64 @@
       "name": "Find Channel"
     },
     {
+      "comment": "Check is User a Bot",
+      "color": "#808040",
+      "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName": "Member",
+      "info": "0",
+      "varName2": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "5",
+      "name": "Check If Member"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "type": "28",
+      "before": "",
+      "limit": "1",
+      "storage2": "1",
+      "varName2": "bot",
+      "name": "Store Audit Log List MOD"
+    },
+    {
+      "list": "7",
+      "varName": "bot",
+      "getType": "0",
+      "position": "",
+      "storage": "1",
+      "varName2": "bot.list",
+      "name": "Get Item from List"
+    },
+    {
+      "storage": "1",
+      "varName": "bot.list",
+      "info": "2",
+      "position": "",
+      "storage2": "1",
+      "varName2": "executer.bot",
+      "name": "Store Audit Log Info MOD"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "User is a Bot and Invited by:",
+      "message": "${tempVars(\"executer.bot\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "description": "Continue",
+      "jump_to_anchor": "without_emoji",
+      "color": "#00ff00",
+      "name": "Jump to Anchor"
+    },
+    {
       "comment": "Check Emoji Info",
       "color": "#ffff00",
       "name": "Comment"
@@ -1343,6 +1401,13 @@
       "message": "${tempVars(\"member.j\")}",
       "inline": "0",
       "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "ID: ${tempVars(\"member.id\")}",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
     },
     {
       "storage": "1",
