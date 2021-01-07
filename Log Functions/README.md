@@ -4,8 +4,8 @@ I am planning some rawdatas for log functions here, feel free to use them!
 - [x] Member Leave Server
 - [X] Member Kicked from Server
 - [X] Channel Create
-- [ ] Channel Delete
-- [ ] Role Create
+- [X] Channel Delete
+- [X] Role Create
 - [ ] Role Delete
 - [ ] Member Banned
 - [ ] Member Unbanned
