@@ -1,0 +1,273 @@
+{
+    "name": "Role Create",
+    "temp": "role",
+    "event-type": "10",
+    "_id": "gKWEy",
+    "actions": [
+      {
+        "comment": "PLS READ <b>If you have no idea what you are doing then please leave the RawData as it is, if you have any problems please contact me (https://discord.com/users/310115562305093632) This RawData was created by NewtTheWolf</b>",
+        "color": "#ff0000",
+        "name": "Comment"
+      },
+      {
+        "comment": "Get Embed Infos",
+        "color": "#008000",
+        "name": "Comment"
+      },
+      {
+        "code": "require('dotenv').config();\nlet embed_title = process.env.EMBED_TITLE_ROLE_CREATE\nlet embed_color = process.env.EMBED_COLOR_ROLE_CREATE\nthis.storeValue(embed_title, 1, \"embed_title\", cache);\nthis.storeValue(embed_color, 1, \"embed_color\", cache);",
+        "behavior": "0",
+        "interpretation": "1",
+        "storage": "0",
+        "varName": "",
+        "VTypeSelect": "0",
+        "CVTypeValue": "",
+        "name": "Run Script"
+      },
+      {
+        "comment": "Check Webhook Function",
+        "color": "#ff8000",
+        "name": "Comment"
+      },
+      {
+        "code": "require('dotenv').config();\nlet webhook_function = process.env.WEBHOOK_FUNCTION\nthis.storeValue(webhook_function, 1, \"webhook_function\", cache);",
+        "behavior": "0",
+        "interpretation": "1",
+        "storage": "0",
+        "varName": "",
+        "VTypeSelect": "0",
+        "CVTypeValue": "",
+        "name": "Run Script"
+      },
+      {
+        "storage": "1",
+        "varName": "webhook_function",
+        "comparison": "12",
+        "value": "/(true)/i",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "4",
+        "iffalseVal": "without_webhook_function",
+        "name": "Check Variable"
+      },
+      {
+        "comment": "With Webhook Function",
+        "color": "#ff8000",
+        "name": "Comment"
+      },
+      {
+        "code": "require('dotenv').config();\nlet webhook_id = process.env.WEBHOOK_ID\nlet webhook_token = process.env.WEBHOOK_TOKEN\nthis.storeValue(webhook_id, 1, \"webhook_id\", cache);\nthis.storeValue(webhook_token, 1, \"webhook_token\", cache);",
+        "behavior": "0",
+        "interpretation": "1",
+        "storage": "0",
+        "varName": "",
+        "VTypeSelect": "0",
+        "CVTypeValue": "",
+        "name": "Run Script"
+      },
+      {
+        "id": "${tempVars(\"webhook_id\")}",
+        "token": "${tempVars(\"webhook_token\")}",
+        "storage": "1",
+        "varName": "webhook",
+        "name": "Find Webhook"
+      },
+      {
+        "count": "3",
+        "name": "Skip Actions"
+      },
+      {
+        "anchor_id": "without_webhook_function",
+        "color": "#ff8000",
+        "description": "Without Webhook Function",
+        "name": "Create Anchor"
+      },
+      {
+        "code": "require('dotenv').config();\nlet log_channel_id = process.env.LOG_CHANNEL_ID\nthis.storeValue(log_channel_id, 1, \"log_channel_id\", cache);",
+        "behavior": "0",
+        "interpretation": "1",
+        "storage": "0",
+        "varName": "",
+        "VTypeSelect": "0",
+        "CVTypeValue": "",
+        "name": "Run Script"
+      },
+      {
+        "info": "0",
+        "find": "${tempVars(\"log_channel_id\")}",
+        "storage": "1",
+        "varName": "log_channel",
+        "name": "Find Channel"
+      },
+      {
+        "comment": "Store Role Info",
+        "color": "#ff8000",
+        "name": "Comment"
+      },
+      {
+        "role": "3",
+        "varName": "role",
+        "info": "1",
+        "storage": "1",
+        "varName2": "role.id",
+        "name": "Store Role Info"
+      },
+      {
+        "role": "3",
+        "varName": "role",
+        "info": "5",
+        "storage": "1",
+        "varName2": "role.creation",
+        "name": "Store Role Info"
+      },
+      {
+        "code": "var timestamp = tempVars(\"role.creation\"),\nd = new Date( timestamp );\ndate = d.getHours() + \":\" + d.getMinutes() + \", \" + d.toDateString();\nthis.storeValue(date, 1, \"role.c\", cache);",
+        "behavior": "0",
+        "interpretation": "1",
+        "storage": "0",
+        "varName": "",
+        "VTypeSelect": "0",
+        "CVTypeValue": "",
+        "name": "Run Script"
+      },
+      {
+        "role": "3",
+        "varName": "role",
+        "info": "6",
+        "storage": "1",
+        "varName2": "role.mentionable",
+        "name": "Store Role Info"
+      },
+      {
+        "role": "3",
+        "varName": "role",
+        "info": "13",
+        "storage": "1",
+        "varName2": "role.permissions",
+        "name": "Store Role Info"
+      },
+      {
+        "storage": "0",
+        "varName": "",
+        "type": "30",
+        "before": "",
+        "limit": "1",
+        "storage2": "1",
+        "varName2": "audit.log.list",
+        "name": "Store Audit Log List MOD"
+      },
+      {
+        "list": "7",
+        "varName": "audit.log.list",
+        "getType": "0",
+        "position": "",
+        "storage": "1",
+        "varName2": "audit.log",
+        "name": "Get Item from List"
+      },
+      {
+        "storage": "1",
+        "varName": "audit.log",
+        "info": "2",
+        "position": "",
+        "storage2": "1",
+        "varName2": "executor",
+        "name": "Store Audit Log Info MOD"
+      },
+      {
+        "title": "${tempVars(\"embed_title\")}",
+        "author": "",
+        "color": "${tempVars(\"embed_color\")}",
+        "url": "",
+        "authorIcon": "",
+        "authorUrl": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "timestamp": "true",
+        "debug": "false",
+        "text": "",
+        "year": "",
+        "month": "",
+        "day": "",
+        "hour": "",
+        "minute": "",
+        "second": "",
+        "storage": "1",
+        "varName": "embed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "fieldName": "Role Created by:",
+        "message": "${tempVars(\"executor\")}",
+        "inline": "0",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "fieldName": "Role:",
+        "message": "${tempVars(\"role\")}",
+        "inline": "0",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "fieldName": "Is Role Mentionable:",
+        "message": "${tempVars(\"role.mentionable\")}",
+        "inline": "0",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "fieldName": "Role Crated at:",
+        "message": "${tempVars(\"role.c\")}",
+        "inline": "0",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "fieldName": "Role Permissions:",
+        "message": "${tempVars(\"role.permissions\")}",
+        "inline": "1",
+        "name": "Add Embed Field"
+      },
+      {
+        "storage": "1",
+        "varName": "webhook_function",
+        "comparison": "12",
+        "value": "/(true)/i",
+        "iftrue": "0",
+        "iftrueVal": "",
+        "iffalse": "3",
+        "iffalseVal": "2",
+        "name": "Check Variable"
+      },
+      {
+        "storage": "1",
+        "varName": "webhook",
+        "storage2": "1",
+        "varName2": "embed",
+        "name": "Send Embed to Webhook"
+      },
+      {
+        "name": "End Action Sequence"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "channel": "5",
+        "varName2": "log_channel",
+        "storage3": "0",
+        "varName3": "",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "messageContent": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  }
