@@ -10,6 +10,65 @@
       "name": "Comment"
     },
     {
+      "storage": "0",
+      "varName": "",
+      "type": "0",
+      "before": "",
+      "limit": "1",
+      "storage2": "1",
+      "varName2": "audit",
+      "name": "Store Audit Log List MOD"
+    },
+    {
+      "list": "7",
+      "varName": "audit",
+      "getType": "0",
+      "position": "",
+      "storage": "1",
+      "varName2": "item",
+      "name": "Get Item from List"
+    },
+    {
+      "storage": "1",
+      "varName": "item",
+      "info": "1",
+      "position": "",
+      "storage2": "1",
+      "varName2": "action",
+      "name": "Store Audit Log Info MOD"
+    },
+    {
+      "storage": "1",
+      "varName": "action",
+      "comparison": "1",
+      "value": "\"MEMBER_KICK\"",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "8",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "item",
+      "info": "0",
+      "position": "",
+      "storage2": "1",
+      "varName2": "id",
+      "name": "Store Audit Log Info MOD"
+    },
+    {
+      "storage": "1",
+      "varName": "id",
+      "comparison": "1",
+      "value": "serverVars(\"id\")",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "1",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
       "comment": "Get Default Member Infos",
       "color": "#ff8040",
       "name": "Comment"
