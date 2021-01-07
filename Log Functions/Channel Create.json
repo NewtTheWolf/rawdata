@@ -1,0 +1,280 @@
+{
+  "name": "Channel Create",
+  "temp": "channel",
+  "event-type": "8",
+  "_id": "RDIfb",
+  "actions": [
+    {
+      "comment": "PLS READ <b>If you have no idea what you are doing then please leave the RawData as it is, if you have any problems please contact me (https://discord.com/users/310115562305093632) This RawData was created by NewtTheWolf</b>",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "comment": "Get Embed Infos",
+      "color": "#008000",
+      "name": "Comment"
+    },
+    {
+      "code": "require('dotenv').config();\nlet embed_title = process.env.EMBED_TITLE_CHANNEL_CREATE\nlet embed_color = process.env.EMBED_COLOR_CHANNEL_CREATE\nthis.storeValue(embed_title, 1, \"embed_title\", cache);\nthis.storeValue(embed_color, 1, \"embed_color\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "comment": "Check Webhook Function",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "code": "require('dotenv').config();\nlet webhook_function = process.env.WEBHOOK_FUNCTION\nthis.storeValue(webhook_function, 1, \"webhook_function\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook_function",
+      "comparison": "12",
+      "value": "/(true)/i",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "4",
+      "iffalseVal": "without_webhook_function",
+      "name": "Check Variable"
+    },
+    {
+      "comment": "With Webhook Function",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "code": "require('dotenv').config();\nlet webhook_id = process.env.WEBHOOK_ID\nlet webhook_token = process.env.WEBHOOK_TOKEN\nthis.storeValue(webhook_id, 1, \"webhook_id\", cache);\nthis.storeValue(webhook_token, 1, \"webhook_token\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "id": "${tempVars(\"webhook_id\")}",
+      "token": "${tempVars(\"webhook_token\")}",
+      "storage": "1",
+      "varName": "webhook",
+      "name": "Find Webhook"
+    },
+    {
+      "count": "3",
+      "name": "Skip Actions"
+    },
+    {
+      "anchor_id": "without_webhook_function",
+      "color": "#ff8000",
+      "description": "Without Webhook Function",
+      "name": "Create Anchor"
+    },
+    {
+      "code": "require('dotenv').config();\nlet log_channel_id = process.env.LOG_CHANNEL_ID\nthis.storeValue(log_channel_id, 1, \"log_channel_id\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"log_channel_id\")}",
+      "storage": "1",
+      "varName": "log_channel",
+      "name": "Find Channel"
+    },
+    {
+      "comment": "Store Audit Log and Channel Info",
+      "color": "#000080",
+      "name": "Comment"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "type": "10",
+      "before": "",
+      "limit": "1",
+      "storage2": "1",
+      "varName2": "audit.log",
+      "name": "Store Audit Log List MOD"
+    },
+    {
+      "list": "7",
+      "varName": "audit.log",
+      "getType": "0",
+      "position": "",
+      "storage": "1",
+      "varName2": "audit.log.item",
+      "name": "Get Item from List"
+    },
+    {
+      "storage": "1",
+      "varName": "audit.log.item",
+      "info": "2",
+      "position": "",
+      "storage2": "1",
+      "varName2": "executor",
+      "name": "Store Audit Log Info MOD"
+    },
+    {
+      "storage": "1",
+      "varName": "audit.log.item",
+      "info": "6",
+      "position": "",
+      "storage2": "1",
+      "varName2": "creation",
+      "name": "Store Audit Log Info MOD"
+    },
+    {
+      "code": "var timestamp = tempVars(\"creation\"),\nd = new Date( timestamp );\ndate = d.getHours() + \":\" + d.getMinutes() + \", \" + d.toDateString();\nthis.storeValue(date, 1, \"channel.c\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "channel": "3",
+      "varName": "channel",
+      "info": "1",
+      "storage": "1",
+      "varName2": "channel.id",
+      "name": "Store Channel Info"
+    },
+    {
+      "channel": "3",
+      "varName": "channel",
+      "info": "2",
+      "storage": "1",
+      "varName2": "channel.name",
+      "name": "Store Channel Info"
+    },
+    {
+      "channel": "3",
+      "varName": "channel",
+      "info": "10",
+      "storage": "1",
+      "varName2": "channel.categoryId",
+      "name": "Store Channel Info"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"channel.categoryId\")}",
+      "storage": "1",
+      "varName": "category",
+      "name": "Find Category"
+    },
+    {
+      "category": "1",
+      "varName": "category",
+      "info": "1",
+      "storage": "1",
+      "varName2": "category.name",
+      "name": "Store Category Info"
+    },
+    {
+      "title": "${tempVars(\"embed_title\")}",
+      "author": "",
+      "color": "${tempVars(\"embed_color\")}",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Channel Creator:",
+      "message": "${tempVars(\"executor\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Channel:",
+      "message": "${tempVars(\"channel\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "fieldName": "Channel Infos:",
+      "message": "Channel Category: ${tempVars(\"category.name\")} | Channel Creation: ${tempVars(\"channel.c\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "Channel ID: ${tempVars(\"channel.id\")}",
+      "footerIcon": "",
+      "name": "Set Embed Footer"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook_function",
+      "comparison": "12",
+      "value": "/(true)/i",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "webhook",
+      "storage2": "1",
+      "varName2": "embed",
+      "name": "Send Embed to Webhook"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "5",
+      "varName2": "log_channel",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "messageContent": "",
+      "name": "Send Embed Message"
+    }
+  ]
+}

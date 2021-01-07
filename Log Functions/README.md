@@ -3,7 +3,7 @@ I am planning some rawdatas for log functions here, feel free to use them!
 - [x] Member Join Server 
 - [x] Member Leave Server
 - [X] Member Kicked from Server
-- [ ] Channel Create
+- [X] Channel Create
 - [ ] Channel Delete
 - [ ] Role Create
 - [ ] Role Delete
